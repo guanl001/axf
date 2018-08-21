@@ -127,47 +127,63 @@
 	a）随机生成ticket，存放在cookies中，设置过期时间
 	b）userticket表中存用户和ticket的信息，以及过期时间，过期时间和cookies中的过期时间一致
 
-部分功能展示： 登录注册, 个人中心
+*）下午闪购页面
+
+ 1）闪购页面 --> 商品分类模型, 商品模型
+
+	a）闪购模型的关联关系
+	b）闪购页面的分类商品展示，全部类型的展示
+
+ 2）购物车模型 （CartModel）
+
+	a1）购物车页面展示，购物车中信息展示
+
+ 3）购物车逻辑分析，模型和订单模型的关联等
+
+	b1) 关联用户，关联商品，数量等
+
+
+个人中心功能展示： 登录注册, 个人中心
 
 ![图](static/intro_images/django_axf_login.png)
 ![图](static/intro_images/django_axf_register.png)
 ![图](static/intro_images/django_axf_mine.png)
 
 
+闪购功能展示: 闪购页面
+
+![图](static/intro_images/django_axf_market.png)
+
 
 
 ### day03：
 
-a）购物车模型 （CartModel）
 
-	a1）购物车页面展示，购物车中信息展示
+ 1）增加或者删除选购商品数量,使用ajax异步修改数据
 
-b）购物车逻辑分析，模型和订单模型的关联等
+	a）增加/axf/addtocart/?goodsid=475
+	b）删除/axf/subtocart/?goodsid=475
+	c）选中下单的商品，is_select字段，创建订单的时候过滤掉is_select为False的商品数据
+ 
+ 2) 商品购物车中删除商品的个数为0时，该商品不展示
+ 
+	a) 商品数量减少为0的时候，购物车中商品记录删除，并将页面中商品为0的数据删除
+	b）闪购页面的商品数量数据的刷新，使用ajax去刷新	
 
-	b1) 关联用户，关联商品，数量等
+ 3）下单订单生成
 
-d）增加或者删除选购商品数量,使用ajax异步修改数据
-
-	b1）增加/axf/addtocart/?goodsid=475
-	b2）删除/axf/subtocart/?goodsid=475
-	b3）选中下单的商品，is_select字段，创建订单的时候过滤掉is_select为False的商品数据
-
-e）下单订单生成
-
-	e1）订单模型order，购物车下单以后生成订单信息，包括用户信息，订单支付状态，订单创建时间等
-	e2）根据订单信息创建订单和商品的表信息，该表中关联订单，关联商品，商品的数量等信息
+	a）订单模型order，购物车下单以后生成订单信息，包括用户信息，订单支付状态，订单创建时间等
+	b）根据订单信息创建订单和商品的表信息，该表中关联订单，关联商品，商品的数量等信息
 
 
 作业：
 
 	1. 商品购物车全选或者全不选实现
 	2. 商品购物车中的总价展示实现
-	3. 商品购物车中删除商品的个数为0时，该商品不展示
-	4. 闪购页面的商品数量数据的刷新，使用ajax去刷新
+	
 
-部分功能展示：闪购，购物车
+部分功能展示：购物车
 
-![图](static/intro_images/django_axf_market.png)
 ![图](static/intro_images/django_axf_cart.png)
 
 
